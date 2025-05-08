@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import styled from "styled-components";
+import ContactForm from "./components/ContactForm";
+import ContactList from "./components/ContactList";
+import { Contact } from "./store/slices/contactSlice";
 
-function App() {
-  const [count, setCount] = useState(0)
+const AppContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: ${({ theme }) => theme.spacing(4)};
+`;
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const ContentWrapper = styled.div`
+	flex-grow: 1; /* Faz o conteúdo expandir e empurrar o footer para baixo */
+`;
+
+const Title = styled.h1`
+	color: #ffffff;
+	font-size: ${({ theme }) => theme.fontSizes.xl};
+	text-align: center;
+	margin-bottom: ${({ theme }) => theme.spacing(4)};
+`;
+
+const Hr = styled.hr`
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 48px;
+`;
+
+export default function App() {
+	const [editingContact, setEditingContact] = useState<Contact | null>(null);
+
+	function handleEditContact(contact: Contact) {
+		setEditingContact(contact);
+	}
+
+	function handleFinishEditing() {
+		setEditingContact(null);
+	}
+
+	return (
+		<AppContainer>
+			<ContentWrapper>
+				<Title>Gerenciador de Contatos</Title>
+				<ContactForm
+					contact={editingContact}
+					onFinishEditing={handleFinishEditing}
+				/>
+				<ContactList onEditContact={handleEditContact} />
+			</ContentWrapper>
+			<Hr />
+		</AppContainer>
+	);
 }
-
-export default App
