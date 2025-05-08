@@ -18,7 +18,7 @@ const ContentWrapper = styled.div`
 `;
 
 const Title = styled.h1`
-	color: #ffffff;
+	color:rgb(64, 0, 255);
 	font-size: ${({ theme }) => theme.fontSizes.xl};
 	text-align: center;
 	margin-bottom: ${({ theme }) => theme.spacing(4)};

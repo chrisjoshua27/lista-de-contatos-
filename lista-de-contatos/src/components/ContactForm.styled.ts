@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Card = styled.form`
-  background-color: #000000;
+  background-color:rgb(242, 9, 9);
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: 0 auto;

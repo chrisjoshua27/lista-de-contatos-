@@ -52,7 +52,7 @@ export const TabButton = styled.button<{ active: boolean }>`
 	&:hover {
 		background-color: ${({ active, theme }) =>
 			active ? theme.colors.secondary : "#bbb"};
-		color: #000000;
+		color:rgb(240, 11, 11);
 	}
 `;
 
@@ -69,13 +69,13 @@ export const Table = styled.table`
 	width: 100%;
 	border-collapse: collapse;
 	background-color:rgb(0, 194, 229);
-	color:rgba(207, 207, 207, 0.62);
+	color:rgba(108, 3, 255, 0.62);
 	text-align: left;
 	border-radius: 12px;
 `;
 
 export const TableRow = styled.tr<{ header?: boolean }>`
-	background-color: ${({ header }) => (header ? "#000" : "transparent")};
+	background-color: ${({ header }) => (header ? "#b4b" : "transparent")};
 	border-bottom: 1px solid #555;
 
 	&:hover {
